@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- 自定义Loading progressdialog -->
+    <style name="progress_dialog_style" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">#ffababab</item>
+    </style>
+
+</resources>
