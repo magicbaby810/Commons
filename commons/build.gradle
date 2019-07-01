@@ -16,6 +16,10 @@ android {
         disable 'InvalidPackage'
         ignoreWarnings true
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
@@ -47,7 +51,7 @@ publish {
     userOrg = 'magicbaby'
     groupId = 'com.sk.commons'
     artifactId = 'commons'
-    publishVersion = '0.0.3'
+    publishVersion = '0.0.4'
     desc = 'Android Commons Library'
     website = "https://github.com/magicbaby810/Commons"
 }
