@@ -8,8 +8,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 
 /**
- * Created by ola_sk on 2019/1/15.
- * Email: magicbaby810@gmail.com
+ * @author sk on 2019/1/15.
  */
 public class BaseFragmentsAdapter extends FragmentStatePagerAdapter {
 

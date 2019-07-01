@@ -9,23 +9,6 @@ android {
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "0.0.1"
-    }
-
-    buildTypes {
-        release {
-
-            buildConfigField "String", "BASE_URL", "\"http://shanhai.third-eye.cn/\""
-
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        debug {
-
-            buildConfigField "String", "BASE_URL", "\"http://shanhai.third-eye.cn/\""
-        }
     }
 
     lintOptions {
@@ -64,7 +47,7 @@ publish {
     userOrg = 'magicbaby'
     groupId = 'com.sk.commons'
     artifactId = 'commons'
-    publishVersion = '0.0.2'
+    publishVersion = '0.0.3'
     desc = 'Android Commons Library'
     website = "https://github.com/magicbaby810/Commons"
 }
