@@ -14,6 +14,7 @@ import com.sk.commons.R;
 import com.sk.commons.mvp.TransformMvpUtils;
 import com.sk.commons.mvp.base.BaseModel;
 import com.sk.commons.mvp.base.BasePresenter;
+import com.sk.commons.utils.RxManager;
 
 import butterknife.ButterKnife;
 
@@ -23,7 +24,7 @@ import static com.sk.commons.mvp.TransformMvpUtils.PARAM_INDEX_ZERO;
 
 /**
   *@desc
-  *@author liujia
+  *@author sk
   *@data 2019/4/30
   */
 public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel> extends Fragment {
@@ -31,6 +32,7 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
     protected View rootView;
     public T mPresenter;
     public E mModel;
+    protected RxManager mRxManager;
     private ProgressDialog progressDialog;
 
     @Nullable
@@ -40,17 +42,18 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
             rootView = inflater.inflate(getLayoutId(), container, false);
 
             initLayout(rootView, savedInstanceState);
-
-            ButterKnife.bind(this, rootView);
-            mPresenter = TransformMvpUtils.getT(this, PARAM_INDEX_ZERO);
-            mModel = TransformMvpUtils.getT(this, PARAM_INDEX_ONE);
-            if (mPresenter != null) {
-                mPresenter.mContext = this.getActivity();
-            }
-
-            initPresenter();
-            initView();
         }
+
+        mRxManager = new RxManager();
+        ButterKnife.bind(this, rootView);
+        mPresenter = TransformMvpUtils.getT(this, PARAM_INDEX_ZERO);
+        mModel = TransformMvpUtils.getT(this, PARAM_INDEX_ONE);
+        if (mPresenter != null) {
+            mPresenter.mContext = this.getActivity();
+        }
+
+        initPresenter();
+        initView();
         return rootView;
     }
 

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 
-import com.sk.commons.AppApplication;
+import com.sk.commons.BaseApplication;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -23,7 +23,7 @@ public class SPUtils {
 
     private static SharedPreferences getSharedPreferences() {
         if (sp == null) {
-            sp = AppApplication.getInstance().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+            sp = BaseApplication.getInstance().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         }
         return sp;
     }

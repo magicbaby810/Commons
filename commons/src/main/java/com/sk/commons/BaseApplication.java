@@ -1,9 +1,6 @@
 package com.sk.commons;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.os.Build;
 
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
@@ -15,13 +12,13 @@ import java.lang.reflect.Method;
 /**
  * @author sk on 2019/1/16.
  */
-public class AppApplication extends MultiDexApplication {
+public class BaseApplication extends MultiDexApplication {
 
 
 
-    private static AppApplication instance;
+    private static BaseApplication instance;
 
-    public static AppApplication getInstance() {
+    public static BaseApplication getInstance() {
         return instance;
     }
 

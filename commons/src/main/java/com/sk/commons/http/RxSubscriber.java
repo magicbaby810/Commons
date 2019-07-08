@@ -3,7 +3,7 @@ package com.sk.commons.http;
 
 
 
-import com.sk.commons.AppApplication;
+import com.sk.commons.BaseApplication;
 import com.sk.commons.utils.AppUtils;
 
 import java.net.ConnectException;
@@ -17,7 +17,7 @@ import retrofit2.HttpException;
 
 /**
   *@desc
-  *@author liujia
+  *@author sk
   *@data 2019/4/30
   */
 public abstract class RxSubscriber<R> implements Observer<R> {
@@ -29,7 +29,7 @@ public abstract class RxSubscriber<R> implements Observer<R> {
      */
     @Override
     public void onSubscribe(Disposable d) {
-        if (!AppUtils.isNetAvailable(AppApplication.getInstance().getApplicationContext())) {
+        if (!AppUtils.isNetAvailable(BaseApplication.getInstance().getApplicationContext())) {
             if (d != null && !d.isDisposed()) {
                 d.dispose();
             }

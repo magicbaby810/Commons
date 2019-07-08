@@ -5,7 +5,7 @@ import android.app.Activity;
 import java.util.HashSet;
 
 /**
- * @author liujia
+ * @author sk
  */
 public class ActivityManager {
 

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 
+import com.bumptech.glide.Glide;
 import com.sk.commons.R;
 import com.sk.commons.mvp.TransformMvpUtils;
 import com.sk.commons.mvp.base.BaseModel;
@@ -122,11 +123,13 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     @Override
     protected void onResume() {
         super.onResume();
+        Glide.with(this).resumeRequests();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Glide.with(this).pauseRequests();
     }
 
     @Override
@@ -136,6 +139,8 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         if (mPresenter != null) {
             mPresenter.onDestroy();
         }
+
+        Glide.get(this).clearMemory();
     }
 
     public void gotoActivity(Class<?> clz, boolean isCloseCurrentActivity, Bundle ex) {
