@@ -26,5 +26,14 @@
         <item name="colorControlHighlight">#3fff</item>
     </style>
 
+    <!-- title bar  -->
+    <style name="MainLayoutTopStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:clipToPadding">true</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 
 </resources>
