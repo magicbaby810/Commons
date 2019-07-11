@@ -44,6 +44,12 @@ public class SPUtils {
      * @param object
      */
     public synchronized static void put(String key, Object object) {
+
+        if (null == BaseApplication.getInstance()) {
+            Log.e("SPUtils", "please application extend BaseApplication");
+            return;
+        }
+
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         if (object == null) {
             Log.e("SPUtils", "文件写入失败,请检查参数设置" + " key : " + key);
@@ -87,6 +93,11 @@ public class SPUtils {
      * @return
      */
     public synchronized static Object get(String key, Object defaultObject) {
+
+        if (null == BaseApplication.getInstance()) {
+            Log.e("SPUtils", "please application extend BaseApplication");
+            return null;
+        }
 
         if (defaultObject instanceof String) {
             return getSharedPreferences().getString(key, (String) defaultObject);
