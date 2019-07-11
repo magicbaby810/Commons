@@ -10,7 +10,7 @@ import java.util.Locale;
  *
  * @desc 时间格式转换工具
  *
- * @author liujia on 2016-12-19.
+ * @author sk on 2016-12-19.
  */
 
 public class DateUtils {

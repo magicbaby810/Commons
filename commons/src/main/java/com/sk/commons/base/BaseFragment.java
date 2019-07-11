@@ -24,7 +24,7 @@ import static com.sk.commons.mvp.TransformMvpUtils.PARAM_INDEX_ZERO;
 
 /**
   *@desc
-  *@author liujia
+  *@author sk
   *@data 2019/4/30
   */
 public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel> extends Fragment {

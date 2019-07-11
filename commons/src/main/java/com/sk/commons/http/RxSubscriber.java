@@ -17,7 +17,7 @@ import retrofit2.HttpException;
 
 /**
   *@desc
-  *@author liujia
+  *@author sk
   *@data 2019/4/30
   */
 public abstract class RxSubscriber<R> implements Observer<R> {

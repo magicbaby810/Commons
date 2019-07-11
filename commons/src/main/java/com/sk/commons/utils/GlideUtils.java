@@ -12,7 +12,7 @@ import com.sk.commons.R;
 import java.io.ByteArrayOutputStream;
 
 /**
- * @author liujia on 2019/1/29.
+ * @author sk on 2019/1/29.
  */
 public class GlideUtils {
 
