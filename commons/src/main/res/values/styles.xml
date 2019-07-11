@@ -26,5 +26,19 @@
         <item name="colorControlHighlight">#3fff</item>
     </style>
 
+    <!-- Horizontal divider line -->
+    <style name="DividerHorizontalStyle">
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/text_color_f0</item>
+    </style>
+
+    <!-- Vertical divider line -->
+    <style name="DividerVerticalStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">1px</item>
+        <item name="android:background">@color/text_color_f0</item>
+    </style>
+
 
 </resources>
