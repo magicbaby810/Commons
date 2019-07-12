@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
+import com.sk.commons.utils.SPUtils;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -47,5 +49,12 @@ public class BaseApplication extends MultiDexApplication {
         } catch (Throwable e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isLogin() {
+        if (SPUtils.contains(Constant.TOKEN)) {
+            return true;
+        }
+        return false;
     }
 }
