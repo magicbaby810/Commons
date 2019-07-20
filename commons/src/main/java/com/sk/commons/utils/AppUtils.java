@@ -41,6 +41,7 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.text.DecimalFormat;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -611,6 +612,20 @@ public class AppUtils {
         }
         view.draw(canvas);
         return bitmap;
+    }
+
+    /**
+     * 拼接数据
+     * @param hashMap
+     * @return 返回拼接好的字符串
+     */
+    public static String pieceDataByMap(HashMap hashMap) {
+        StringBuilder stringBuffer = new StringBuilder();
+        for (Object key : hashMap.keySet()) {
+            String value = (String) hashMap.get(key);
+            stringBuffer.append("&").append(key).append("=").append(value);
+        }
+        return stringBuffer.toString();
     }
 
 }
