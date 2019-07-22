@@ -51,10 +51,4 @@ public class BaseApplication extends MultiDexApplication {
         }
     }
 
-    public boolean isLogin() {
-        if (SPUtils.contains(Constant.TOKEN)) {
-            return true;
-        }
-        return false;
-    }
 }
