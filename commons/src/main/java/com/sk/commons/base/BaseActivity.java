@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 
 import com.bumptech.glide.Glide;
@@ -51,6 +52,12 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      * 初始化presenter
      */
     protected abstract void initPresenter();
+
+    /**
+     * 设置状态栏颜色
+     * @return
+     */
+    protected abstract int setStatusBarColor();
 
     /**
      * 设置toolbar标题
@@ -101,7 +108,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         });
     }
 
-    private static void setAndroidNativeLightStatusBar(Activity activity, boolean dark) {
+    private void setAndroidNativeLightStatusBar(Activity activity, boolean dark) {
         View decor = activity.getWindow().getDecorView();
         if (dark) {
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -113,7 +120,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(activity.getResources().getColor(R.color.text_color_33));
+            window.setStatusBarColor(ContextCompat.getColor(this, setStatusBarColor()));
         } else {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             //window.getAttributes().flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | window.getAttributes().flags);
