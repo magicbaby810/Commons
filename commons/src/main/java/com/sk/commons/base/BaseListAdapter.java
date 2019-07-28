@@ -12,19 +12,12 @@ import java.util.Collection;
 import java.util.List;
 
 public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
-    protected Context mContext;
-    private LayoutInflater mInflater;
 
     protected List<T> mDataList = new ArrayList<>();
 
-    public BaseListAdapter(Context context) {
-        mContext = context;
-        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(getLayoutId(), parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(getLayoutId(), parent, false);
         return new BaseViewHolder(itemView);
     }
 

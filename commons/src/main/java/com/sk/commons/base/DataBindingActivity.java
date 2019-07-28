@@ -59,12 +59,6 @@ public abstract class DataBindingActivity<T extends BasePresenter, E extends Bas
     protected abstract int setStatusBarColor();
 
     /**
-     * 设置toolbar标题
-     * @return
-     */
-    protected abstract String getTitleText();
-
-    /**
      * 初始化view
      */
     protected abstract void initView();
