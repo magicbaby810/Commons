@@ -42,18 +42,19 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
             rootView = inflater.inflate(getLayoutId(), container, false);
 
             initLayout(rootView, savedInstanceState);
-        }
 
-        mRxManager = new RxManager();
-        ButterKnife.bind(this, rootView);
-        mPresenter = TransformMvpUtils.getT(this, PARAM_INDEX_ZERO);
-        mModel = TransformMvpUtils.getT(this, PARAM_INDEX_ONE);
-        if (mPresenter != null) {
-            mPresenter.mContext = this.getActivity();
-        }
 
-        initPresenter();
-        initView();
+            mRxManager = new RxManager();
+            ButterKnife.bind(this, rootView);
+            mPresenter = TransformMvpUtils.getT(this, PARAM_INDEX_ZERO);
+            mModel = TransformMvpUtils.getT(this, PARAM_INDEX_ONE);
+            if (mPresenter != null) {
+                mPresenter.mContext = this.getActivity();
+            }
+
+            initPresenter();
+            initView();
+        }
         return rootView;
     }
 
