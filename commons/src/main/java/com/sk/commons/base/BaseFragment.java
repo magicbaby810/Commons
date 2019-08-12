@@ -34,6 +34,7 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
     public E mModel;
     protected RxManager mRxManager;
     private ProgressDialog progressDialog;
+    private boolean isVisible;
 
     @Nullable
     @Override
@@ -88,6 +89,26 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
     protected abstract void initView();
 
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if (getUserVisibleHint()) {
+            isVisible = true;
+            onVisible();
+        } else {
+            isVisible = false;
+            onInvisible();
+        }
+    }
+
+    protected void onVisible() {
+
+    }
+
+    protected void onInvisible() {
+
+    }
 
     @Override
     public void onDestroyView() {
