@@ -34,6 +34,7 @@ import androidx.core.app.ActivityCompat;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.DataOutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -646,6 +647,37 @@ public class AppUtils {
                 //--设置背景
                 mView.setBackgroundColor(Color.TRANSPARENT);
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 判断当前手机是否被root
+     *
+     * @return
+     */
+    public synchronized static boolean checkRoot() {
+        Process process = null;
+        DataOutputStream os = null;
+        try {
+            process = Runtime.getRuntime().exec("su");
+            os = new DataOutputStream(process.getOutputStream());
+            os.writeBytes("exit\n");
+            os.flush();
+            int exitValue = process.waitFor();
+            return exitValue == 0;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            try {
+                if (os != null) {
+                    os.close();
+                }
+                if (process != null) {
+                    process.destroy();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
