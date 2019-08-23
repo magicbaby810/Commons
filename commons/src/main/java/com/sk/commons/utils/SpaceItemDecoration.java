@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.view.View;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,43 +13,65 @@ import androidx.recyclerview.widget.RecyclerView;
  * @desc item间隔
  */
 public class SpaceItemDecoration extends RecyclerView.ItemDecoration {
-    private int leftRight;
-    private int topBottom;
+
+    private int left;
+    private int right;
+    private int top;
+    private int bottom;
 
     public SpaceItemDecoration(int leftRight, int topBottom) {
-        this.leftRight = leftRight;
-        this.topBottom = topBottom;
+        this.left = leftRight;
+        this.right = leftRight;
+        this.top = topBottom;
+        this.bottom = topBottom;
     }
 
-    @Override
-    public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-        super.onDraw(c, parent, state);
+    public SpaceItemDecoration(int left, int right, int top, int bottom) {
+        this.left = left;
+        this.right = right;
+        this.top = top;
+        this.bottom = bottom;
     }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        LinearLayoutManager layoutManager = (LinearLayoutManager) parent.getLayoutManager();
-        //竖直方向的
-        if (layoutManager.getOrientation() == LinearLayoutManager.VERTICAL) {
-            //最后一项需要 bottom
-            if (parent.getChildAdapterPosition(view) == layoutManager.getItemCount() - 1) {
-                outRect.bottom = topBottom;
-            }
-            //第一项不需要 top
-            if (parent.getChildAdapterPosition(view) != 0) {
-                outRect.top = topBottom;
-            }
-            outRect.left = leftRight;
-            outRect.right = leftRight;
-        } else {
-            //最后一项需要right
-            if (parent.getChildAdapterPosition(view) == layoutManager.getItemCount() - 1) {
-                outRect.right = leftRight;
-            }
-            outRect.top = topBottom;
-            outRect.left = leftRight;
-            outRect.bottom = topBottom;
-        }
-    }
 
+        try {
+            GridLayoutManager gridLayoutManager = (GridLayoutManager) parent.getLayoutManager();
+
+            //最后一项不需要right
+            if (parent.getChildAdapterPosition(view) != gridLayoutManager.getItemCount() - 1) {
+                outRect.right = right;
+            }
+
+            outRect.top = top;
+            outRect.left = left;
+            outRect.bottom = bottom;
+
+        } catch (ClassCastException e) {
+
+            LinearLayoutManager linearLayoutManager = (LinearLayoutManager) parent.getLayoutManager();
+
+            //竖直方向的
+            if (linearLayoutManager.getOrientation() == LinearLayoutManager.VERTICAL) {
+                //最后一项需要 bottom
+                if (parent.getChildAdapterPosition(view) == linearLayoutManager.getItemCount() - 1) {
+                    outRect.bottom = bottom;
+                }
+                //第一项不需要 top
+                if (parent.getChildAdapterPosition(view) != 0) {
+                    outRect.top = top;
+                }
+                outRect.left = left;
+                outRect.right = right;
+            } else {
+
+                outRect.right = right;
+                outRect.top = top;
+                outRect.left = left;
+                outRect.bottom = bottom;
+            }
+        }
+
+    }
 }
