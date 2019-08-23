@@ -43,18 +43,18 @@ public abstract class DataBindingFragment<T extends BasePresenter, E extends Bas
             rootView = getLayoutView(inflater, container);
 
             initLayout(rootView, savedInstanceState);
-        }
 
-        mRxManager = new RxManager();
-        ButterKnife.bind(this, rootView);
-        mPresenter = TransformMvpUtils.getT(this, PARAM_INDEX_ZERO);
-        mModel = TransformMvpUtils.getT(this, PARAM_INDEX_ONE);
-        if (mPresenter != null) {
-            mPresenter.mContext = this.getActivity();
-        }
+            mRxManager = new RxManager();
+            ButterKnife.bind(this, rootView);
+            mPresenter = TransformMvpUtils.getT(this, PARAM_INDEX_ZERO);
+            mModel = TransformMvpUtils.getT(this, PARAM_INDEX_ONE);
+            if (mPresenter != null) {
+                mPresenter.mContext = this.getActivity();
+            }
 
-        initPresenter();
-        initView();
+            initPresenter();
+            initView();
+        }
         return rootView;
     }
 
