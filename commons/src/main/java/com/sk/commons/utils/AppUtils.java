@@ -44,6 +44,7 @@ import java.net.SocketException;
 import java.text.DecimalFormat;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -683,5 +684,27 @@ public class AppUtils {
             }
         }
     }
+
+
+    /**
+     * @desc 在矩形内随机生成经纬度
+     * @param MinLon：最小经度
+     * 		  MaxLon：最大经度
+     *  	  MinLat：最小纬度
+     * 		  MaxLat：最大纬度
+     * @return
+     */
+    public static Map<String, String> randomLonLat(double MinLon, double MaxLon, double MinLat, double MaxLat) {
+        BigDecimal db = new BigDecimal(Math.random() * (MaxLon - MinLon) + MinLon);
+        // 小数后6位
+        String lon = db.setScale(6, BigDecimal.ROUND_HALF_UP).toString();
+        db = new BigDecimal(Math.random() * (MaxLat - MinLat) + MinLat);
+        String lat = db.setScale(6, BigDecimal.ROUND_HALF_UP).toString();
+        Map<String, String> map = new HashMap<>();
+        map.put("lon", lon);
+        map.put("lat", lat);
+        return map;
+    }
+
 
 }
