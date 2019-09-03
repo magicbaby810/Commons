@@ -8,7 +8,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 16
     }
 
     lintOptions {
@@ -30,7 +30,7 @@ dependencies {
     api 'com.google.android.material:material:1.1.0-alpha05'
 
     //retrofit+rxjava+okhttp
-    api 'com.squareup.retrofit2:retrofit:2.5.0'
+    api 'com.squareup.retrofit2:retrofit:2.6.1'
     api 'com.squareup.retrofit2:converter-scalars:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.5.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
@@ -54,7 +54,7 @@ publish {
     userOrg = 'magicbaby'
     groupId = 'com.sk.commons'
     artifactId = 'commons'
-    publishVersion = '0.0.44'
+    publishVersion = '0.0.46'
     desc = 'Android Commons Library'
     website = "https://github.com/magicbaby810/Commons"
 }
