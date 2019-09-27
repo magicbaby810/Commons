@@ -31,6 +31,8 @@ import android.widget.RatingBar;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 
+import com.gyf.barlibrary.ImmersionBar;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -704,6 +706,35 @@ public class AppUtils {
         map.put("lon", lon);
         map.put("lat", lat);
         return map;
+    }
+
+
+    public static int getNavigationHeight(Context activity) {
+        if (isNavigationBarShow((Activity) activity)) {
+            return ImmersionBar.getNavigationBarHeight((Activity) activity);
+        }
+        return 0;
+    }
+
+    /**
+     * 检测虚拟按键是否可见
+     *
+     * @param activity activity
+     * @return
+     */
+    public static boolean isNavigationBarShow(Activity activity) {
+
+        //虚拟键的view,为空或者不可见时是隐藏状态
+        View view = activity.findViewById(android.R.id.navigationBarBackground);
+        if (view == null) {
+            return false;
+        }
+        int visible = view.getVisibility();
+        if (visible == View.GONE || visible == View.INVISIBLE) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 

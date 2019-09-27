@@ -54,7 +54,7 @@ publish {
     userOrg = 'magicbaby'
     groupId = 'com.sk.commons'
     artifactId = 'commons'
-    publishVersion = '0.0.46'
+    publishVersion = '0.0.48'
     desc = 'Android Commons Library'
     website = "https://github.com/magicbaby810/Commons"
 }

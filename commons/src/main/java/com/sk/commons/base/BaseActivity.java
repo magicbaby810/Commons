@@ -114,7 +114,11 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(ContextCompat.getColor(this, setStatusBarColor()));
+            if (setStatusBarColor() == 0) {
+                window.setStatusBarColor(ContextCompat.getColor(this, R.color.text_color_f0));
+            } else {
+                window.setStatusBarColor(ContextCompat.getColor(this, setStatusBarColor()));
+            }
         } else {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             //window.getAttributes().flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | window.getAttributes().flags);
