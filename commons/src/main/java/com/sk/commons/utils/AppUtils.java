@@ -737,5 +737,20 @@ public class AppUtils {
         }
     }
 
+    /**
+     * 检查网络是否可用
+     *
+     * @param paramContext
+     *
+     * @return
+     */
+    public static boolean isNetConnected(Context paramContext) {
+        boolean i = false;
+        NetworkInfo localNetworkInfo = ((ConnectivityManager) paramContext.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable())) {
+            return true;
+        }
+        return false;
+    }
 
 }
