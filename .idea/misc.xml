@@ -13,6 +13,19 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="commons/src/main/res/drawable/shape_common_tips_bg_corner.xml" value="0.24351851851851852" />
+        <entry key="commons/src/main/res/drawable/shape_common_toast_background.xml" value="0.24351851851851852" />
+        <entry key="commons/src/main/res/layout/layout_custom_img_title_toast.xml" value="0.24895833333333334" />
+        <entry key="commons/src/main/res/layout/layout_custom_img_toast.xml" value="0.24895833333333334" />
+        <entry key="commons/src/main/res/layout/layout_custom_toast.xml" value="0.24895833333333334" />
+        <entry key="commons/src/main/res/layout/layout_custom_toast_wrap.xml" value="0.24895833333333334" />
+        <entry key="commons/src/main/res/layout/layout_login_failure_toast.xml" value="0.24895833333333334" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
