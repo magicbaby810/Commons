@@ -1,10 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'com.novoda.bintray-release'
 
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
 
     defaultConfig {
@@ -46,15 +44,4 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
     //沉浸状态栏
     api 'com.gyf.barlibrary:barlibrary:2.3.0'
-}
-
-
-
-publish {
-    userOrg = 'magicbaby'
-    groupId = 'com.sk.commons'
-    artifactId = 'commons'
-    publishVersion = '0.0.49'
-    desc = 'Android Commons Library'
-    website = "https://github.com/magicbaby810/Commons"
 }
