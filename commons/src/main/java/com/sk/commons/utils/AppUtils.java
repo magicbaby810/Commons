@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -17,9 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.ContactsContract;
-import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -40,10 +37,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -759,50 +752,5 @@ public class AppUtils {
         }
         return false;
     }
-
-    /**
-     * 保存图片到本地
-     * @param path
-     * @param bmp
-     */
-    public static void saveImage(Bitmap bmp, String path) {
-        // 首先保存图片
-        File file = new File(path);
-        try {
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            FileOutputStream fos = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 保存图片到相册
-     * @param context
-     * @param bmp
-     */
-    public static void saveImageToGallery(Context context, Bitmap bmp, String path) {
-
-        String fileName = path.substring(path.lastIndexOf("/"));
-        saveImage(bmp, path);
-        // 其次把文件插入到系统图库
-        try {
-            MediaStore.Images.Media.insertImage(context.getContentResolver(), path, fileName, null);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        // 最后通知图库更新
-        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + path)));
-
-    }
-
 
 }
