@@ -56,13 +56,21 @@ dependencies {
 //    website = "https://github.com/magicbaby810/Commons"
 //}
 
+// 增加上传源码的task
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = "sources"
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId = 'com.sk.commons'
             artifactId = 'commons'
             version = '0.0.49'
-            artifact 'build/aar/commons.aar'
+            artifact sourceJar
+            // 必须有这个 否则不会上传AAR包  将bundleReleaseAar任务的单个输出文件作为发布的AAR文件。这样，该AAR文件就会成为 MavenPublication 的 artifact 并进行发布
+            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
         }
 
     }
